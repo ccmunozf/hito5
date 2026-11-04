@@ -1,4 +1,4 @@
-﻿# Pizzería Mamma Mía 🍕
+# Pizzería Mamma Mía 🍕
 
 Proyecto educativo con React y Vite. Incluye el catálogo del Hito 1, los formularios del Hito 2 y la renderización dinámica y el carrito del Hito 3.
 
@@ -92,7 +92,7 @@ El total de $25.000 y los botones de carrito, detalle y añadir del Hito 1 sigue
 - El total se calcula sumando precio × cantidad. Un carrito vacío muestra $0 y deshabilita Pagar.
 - Pagar es un botón de presentación sin acción, tal como solicita la pauta.
 
-El carrito se muestra inicialmente. Para facilitar la revisión de todos los hitos, se conserva la navegación a Home, Login y Register en lugar de comentar sus componentes. El carrito permanece montado y conserva sus cantidades al cambiar de vista; al recargar la página vuelve a los datos iniciales. El botón superior con total de $25.000 permanece estático según la pauta; usa la opción **Carrito** para ver el pedido y su total calculado.
+Home se muestra inicialmente desde el Hito 4. Para facilitar la revisión de todos los hitos, se conserva la navegación a Home, Login y Register en lugar de comentar sus componentes. El carrito permanece montado y conserva sus cantidades al cambiar de vista; al recargar la página vuelve a los datos iniciales. El botón superior con total de $25.000 permanece estático según la pauta; usa la opción **Carrito** para ver el pedido y su total calculado.
 
 ### Comprobación del Hito 3
 
@@ -104,3 +104,16 @@ El carrito se muestra inicialmente. Para facilitar la revisión de todos los hit
 6. Navega a Home: deben aparecer seis tarjetas y los ingredientes en listas.
 7. Vuelve a Carrito: se mantienen los cambios. Recarga para reiniciar el ejemplo.
 8. Comprueba que Login y Register siguen validando sus formularios.
+
+## Hito 4: consumo de API
+
+- `Home.jsx` usa `useEffect`, `useState` y `fetch` para consultar `http://localhost:5000/api/pizzas`. El cat?logo ya no utiliza el array local de `pizzas.js`; ese archivo se conserva para el carrito del Hito 3.
+- `Pizza.jsx` consulta `http://localhost:5000/api/pizzas/p001` con `useEffect` y `fetch`. Muestra nombre, precio, ingredientes, imagen y descripci?n (`desc`). El ID es fijo seg?n la pauta y A?adir todav?a es un bot?n sin acci?n.
+- Ambas vistas muestran carga y errores, comprueban la respuesta HTTP y cancelan la petici?n al desmontarse.
+- Home es la vista inicial. La opci?n **Pizza p001** permite revisar el detalle sin comentar componentes; se conserva el acceso al carrito y los formularios anteriores.
+
+### Backend necesario
+
+El material de apoyo **BackendPizzas** no est? incluido en este repositorio ni junto al PDF recibido. Desc?rgalo desde el curso y, en su propia carpeta, ejecuta `npm install` y `npm start`. Debe atender en `http://localhost:5000` y permitir solicitudes desde el frontend. No ejecutes esos comandos del backend dentro de esta carpeta React.
+
+Luego ejecuta `npm run dev` en este proyecto. Comprueba que Home muestre las pizzas del servidor y que **Pizza p001** muestre tambi?n su descripci?n. Det?n el backend y vuelve a entrar en cada vista para comprobar el mensaje de error. Los formularios y el carrito siguen funcionando con su comportamiento anterior.
