@@ -1,7 +1,8 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { validateAuth } from '../utils/validateAuth'
 
-function AuthForm({ isRegister = false, onNavigate }) {
+function AuthForm({ isRegister = false }) {
   const [values, setValues] = useState({ email: '', password: '', confirmPassword: '' })
   const [feedback, setFeedback] = useState(null)
 
@@ -53,7 +54,7 @@ function AuthForm({ isRegister = false, onNavigate }) {
         </form>
         <p className="auth-switch">
           {isRegister ? '¿Ya tienes una cuenta?' : '¿Todavía no tienes cuenta?'}{' '}
-          <button type="button" onClick={() => onNavigate(isRegister ? 'login' : 'register')}>{isRegister ? 'Inicia sesión' : 'Regístrate aquí'}</button>
+          <Link to={isRegister ? '/login' : '/register'}>{isRegister ? 'Inicia sesión' : 'Regístrate aquí'}</Link>
         </p>
         <p className="auth-note">Demostración del Hito 2: se validan los datos del formulario, sin crear cuentas ni conectarse a un servidor.</p>
       </section>

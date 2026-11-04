@@ -1,10 +1,7 @@
-﻿import { useState } from 'react'
-import { pizzaCart } from '../pizzas'
 import { formatPrice } from '../utils/formatPrice'
 import { calculateTotal, updateQuantity } from '../utils/cart'
 
-function Cart({ hidden = false }) {
-  const [cart, setCart] = useState(pizzaCart)
+function Cart({ cart, setCart }) {
   const total = calculateTotal(cart)
 
   function changeQuantity(id, change) {
@@ -12,7 +9,7 @@ function Cart({ hidden = false }) {
   }
 
   return (
-    <main className="cart-page" hidden={hidden}>
+    <main className="cart-page">
       <section className="cart-panel" aria-labelledby="cart-title">
         <h1 id="cart-title">Detalles del pedido</h1>
         <p>Ajusta las cantidades de tus pizzas antes de continuar.</p>
