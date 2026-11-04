@@ -9,6 +9,7 @@ function Navbar({ page, onNavigate }) {
     <nav className="navbar" aria-label="Navegación principal">
       <span className="brand">Pizzería Mamma Mía!</span>
       <div className="nav-links">
+        <button type="button" aria-current={page === 'pizza' ? 'page' : undefined} onClick={() => onNavigate('pizza')}>Pizza p001</button>
         <button type="button" aria-current={page === 'home' ? 'page' : undefined} onClick={() => onNavigate('home')}>🍕 Home</button>
         <button type="button" aria-current={page === 'cart' ? 'page' : undefined} onClick={() => onNavigate('cart')}>Carrito</button>
         {token ? (
